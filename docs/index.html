@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Model Check：DeepSeek Harness 模型检测插件。体验独立指纹、糖果测评、响应路由与三款主题皮肤。">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="theme-color" content="#08131c">
+  <title>Model Check · 模型检测，一目了然</title>
+  <link rel="icon" href="./assets/ui/wing-mark.png">
+  <link rel="stylesheet" href="./site.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="./"><img src="./assets/ui/wing-mark.png" alt="">Model Check</a>
+    <nav aria-label="网站导航"><a href="#about">关于插件</a><a href="https://github.com/motionalpha84/dsh-model-check" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="preview-column">
+        <div class="preview-caption"><span class="live-dot"></span> 交互演示 <span class="caption-divider">/</span> <span>可直接点击操作</span></div>
+        <div class="preview-stage" id="preview-stage" aria-label="可交互的 Model Check 插件">
+          <div class="stage-corner top-left" aria-hidden="true"></div><div class="stage-corner bottom-right" aria-hidden="true"></div>
+          <div id="plugin-stage"><p class="loading" id="loading">正在载入插件…</p></div>
+          <div class="hidden-note" id="hidden-note" hidden>面板已隐藏，点击左侧悬钮即可展开。</div>
+        </div>
+        <p class="preview-footnote">真实插件组件 <span>·</span> 虚构示例数据 <span>·</span> 零模型请求</p>
+      </div>
+      <div class="intro">
+        <p class="eyebrow">DEEPSEEK HARNESS PLUGIN <span class="version" data-version>v0.1.0</span></p>
+        <h1 id="hero-title">模型信息，<br><span>一目了然。</span></h1>
+        <p class="lead">指纹候选、糖果测评、响应路由。<br>把关心的信息，放在会话旁的一扇小窗里。</p>
+        <div class="download-actions"><a class="button primary" href="https://github.com/motionalpha84/dsh-model-check/releases/latest"><span aria-hidden="true">↓</span> 下载正式版</a><a class="button secondary" href="https://github.com/motionalpha84/dsh-model-check#安装" target="_blank" rel="noopener noreferrer">安装说明 <span aria-hidden="true">↗</span></a></div>
+        <div class="demo-controls" aria-label="交互演示选项">
+          <div class="controls-heading"><h2>试试你的显示方式</h2><button id="reset" type="button">重置演示 <span aria-hidden="true">↺</span></button></div>
+          <fieldset class="control-row"><legend>皮肤</legend><div class="theme-options">
+            <button type="button" data-theme="original" aria-pressed="false"><i class="swatch original"></i>流萤</button>
+            <button type="button" data-theme="light" aria-pressed="false"><i class="swatch light"></i>银灰</button>
+            <button type="button" data-theme="dark" aria-pressed="true"><i class="swatch dark"></i>黑青</button>
+          </div></fieldset>
+          <fieldset class="control-row"><legend>示例提供商</legend><div class="provider-options">
+            <button type="button" data-provider="test-gpt" aria-pressed="true">test-gpt</button>
+            <button type="button" data-provider="test-Claude" aria-pressed="false">test-Claude</button>
+          </div></fieldset>
+          <div class="control-row scenario-row"><label for="scenario">响应标签</label><select id="scenario"><option value="match">与请求模型一致</option><option value="mismatch">与请求模型不同</option><option value="unknown">未提供标签</option></select></div>
+          <div class="demo-bottom"><button id="run-demo" type="button"><span aria-hidden="true">↻</span> 模拟一次联合检测</button><span id="demo-status" role="status" aria-live="polite">不消耗接口额度</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="about" id="about" aria-label="插件功能">
+      <article><span class="feature-index">01 / 检测</span><h2>多一份观察依据</h2><p>数字指纹与糖果题并行检测，候选概率、有效样本和回答详情各自清晰呈现。</p></article>
+      <article><span class="feature-index">02 / 会话</span><h2>跟上每一次切换</h2><p>请求与响应分开显示。历史、频率按会话保存，最小化仍能查看候选摘要。</p></article>
+      <article><span class="feature-index">03 / 外观</span><h2>融入你的工作区</h2><p>三款皮肤，也可跟随 DSH 主题。浮窗支持两侧吸附，收起后保留轻巧悬钮。</p></article>
+    </section>
+    <p class="scope-note">实际使用会产生额外模型请求：联合检测默认 4 次，行为指纹 60 / 200 / 400 次。库内概率是相对分布，不能认证原聊天的模型身份。<a href="https://github.com/motionalpha84/dsh-model-check#如何理解结果">了解结果的含义 ↗</a></p>
+  </main>
+  <footer class="site-footer"><p>感谢 <a href="https://github.com/xqy2006/ModelTrace">xqy2006 · ModelTrace</a> 的指纹库与方法，以及 <a href="https://github.com/haowang02/cpa-plugin-codex-candy-eval">haowang02 · Candy Eval</a> 的糖果测评与行为基准。</p><div><span>Model Check <span data-version>v0.1.0</span></span><a href="https://github.com/motionalpha84/dsh-model-check/blob/main/NOTICE.md">来源与许可 ↗</a></div></footer>
+  <noscript><p>交互演示需要 JavaScript。可直接访问 GitHub 仓库查看截图和安装说明。</p></noscript>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

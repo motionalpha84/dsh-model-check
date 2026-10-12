@@ -1,0 +1,3 @@
+- insert:
+    - id: model-check
+      name: dsh-model-check

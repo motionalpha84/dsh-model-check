@@ -1,0 +1,13 @@
+* text=auto
+*.png binary
+*.jpg binary
+*.gif binary
+# Preserve upstream files byte-for-byte; scripts/build.mjs verifies their Git blob hashes.
+/vendor/* -text
+/assets/modeltrace-original-bank.json -text
+/assets/modeltrace-candy-bank.json -text
+/assets/fingerprint_probes.json -text
+/assets/fingerprint_baselines.json -text
+/tests/fixtures/modeltrace-golden.json -text
+/LICENSE.ModelTrace -text
+/LICENSE.CandyEval -text

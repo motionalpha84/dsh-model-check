@@ -1,0 +1,64 @@
+{
+  "name": "dsh-model-check",
+  "version": "0.1.0",
+  "description": "Model Check：ModelTrace 与糖果题联合检测、模型路由、行为指纹。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "vendor",
+    "assets",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "LICENSE.ModelTrace",
+    "LICENSE.Feather",
+    "LICENSE.CandyEval",
+    "NOTICE.md",
+    "src",
+    "scripts/build.mjs",
+    "tests"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:demo": "node --test demo-tests/*.test.mjs",
+    "build:demo": "node scripts/build.mjs && node scripts/build-demo.mjs",
+    "demo": "node scripts/serve-demo.mjs",
+    "prepack": "node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.2.0-rc.2"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-client-ui-theme"
+      ]
+    }
+  },
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/motionalpha84/dsh-model-check.git" },
+  "homepage": "https://motionalpha84.github.io/dsh-model-check/",
+  "bugs": { "url": "https://github.com/motionalpha84/dsh-model-check/issues" },
+  "keywords": [
+    "deepseek-harness",
+    "dsh-plugin",
+    "modeltrace",
+    "model-check",
+    "firefly"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "source": "https://github.com/xqy2006/ModelTrace",
+  "commit": "6cd4a8ff0f3f4e49d6d6969dd2fbadfa1569fde2",
+  "license": "MIT",
+  "author": "xqy2006",
+  "files": {
+    "vendor/fingerprint-core.mjs": "83fa5bd611e18f8339122582335123c8ea168ed242298bb31f4e363abeeb6e4a",
+    "vendor/prompts.mjs": "2e517c7c7a85096d6b90ddf6a979bf6f0ed9dede218d25575dc74efda839d88a",
+    "vendor/challenge-browser.js": "4a3868c9fe237cabde92f0d2bffaf32118f558f7a43fcc336874fecd2bf6be39",
+    "assets/modeltrace-original-bank.json": "f267d0513aa06981d024ec5394746fceddf44e4e8a75fa6bf8304255f4b32d6d",
+    "LICENSE.ModelTrace": "238afb57e498990742f84b9ce6167b4e256ac06104a9938ce953bc41c14bea51"
+  },
+  "candyEval": {
+    "source": "https://github.com/haowang02/cpa-plugin-codex-candy-eval",
+    "commit": "cdd4fb908b03de0659664af3aff363d75a9642b3",
+    "latestCheckedCommit": "0de3802c70cf8ca99b8427f7fd0ee4d0fb292b80",
+    "dataUnchanged": true,
+    "author": "Hao Wang",
+    "license": "MIT",
+    "files": {
+      "assets/modeltrace-candy-bank.json": "a4e256c00444179b76f3855578660e66f30659df8c0122f1768dd05a8d705630",
+      "assets/fingerprint_probes.json": "b415f7eeb6f1d0edc574e4e55c6391389546c40e4c29fefaf6e0a3867db805ea",
+      "assets/fingerprint_baselines.json": "bf3a8f19be9206827a541489ea4e6542010aedd4d4f4c3b4b19438e2ae0a6161",
+      "LICENSE.CandyEval": "7f2bf93b0db701c01eb574a85c521bd7581cd373b82e4ca8d719286b48572c3c",
+      "tests/fixtures/modeltrace-golden.json": "e1f22d86017c09c027a8558bc20984f1335aada73652426cc13ef73b2529fea2"
+    },
+    "adaptedModules": [
+      "src/evaluations.mjs",
+      "src/behavior.mjs"
+    ],
+    "permutationRng": "CRC32-seeded xorshift32; Go RNG not reused"
+  },
+  "bankUnion": {
+    "file": "assets/unified_bank.json",
+    "sha256": "089d6244665972a1721ca7987642167883fc92e8efeeb27daa9401a45b120736",
+    "models": 19,
+    "method": "shared-reference-anchored calibrated log-odds fusion",
+    "recalibrated": false,
+    "commonModels": 16
+  },
+  "upstreamCheckedOn": "2026-10-12"
+}
