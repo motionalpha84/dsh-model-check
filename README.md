@@ -12,8 +12,12 @@
 <td width="58%" valign="middle">
 <h3>模型信息，一目了然</h3>
 <p>联合检测 · 响应路由 · 会话历史<br>三款皮肤 · 跟随 DSH 主题 · 拖动吸附</p>
-<p><a href="https://motionalpha84.github.io/dsh-model-check/"><b>▶ 打开交互演示</b></a></p>
-<p><a href="#安装"><b>↓ 推荐安装：dsh-model-check</b></a> · <a href="https://github.com/motionalpha84/dsh-model-check/releases/latest">离线下载</a></p>
+
+```bash
+dsh plugin --profile desktop add dsh-model-check --ignore-scripts
+```
+
+<p><a href="#安装"><b>↓安装详情</b></a></p>
 <p><sub>演示使用真实插件组件与虚构数据，提供商仅为 test-gpt、test-Claude，不调用模型、不消耗额度。README 内为静态预览，点击进入完整交互页面。</sub></p>
 </td>
 </tr>

@@ -30,7 +30,11 @@
         <p class="eyebrow">DEEPSEEK HARNESS PLUGIN <span class="version" data-version>v0.1.0</span></p>
         <h1 id="hero-title">模型信息，<br><span>一目了然。</span></h1>
         <p class="lead">指纹候选、糖果测评、响应路由。<br>把关心的信息，放在会话旁的一扇小窗里。</p>
-        <div class="download-actions"><a class="button primary" href="https://github.com/motionalpha84/dsh-model-check#安装" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↓</span> 推荐安装</a><a class="button secondary" href="https://github.com/motionalpha84/dsh-model-check/releases/latest">离线下载 <span aria-hidden="true">↗</span></a></div>
+        <div class="install-command" role="group" aria-label="推荐安装命令">
+          <code id="install-command"><span>dsh plugin</span> <span>--profile desktop</span> <span>add dsh-model-check</span> <span>--ignore-scripts</span></code>
+          <button id="copy-install" type="button" aria-label="复制安装命令">复制命令</button>
+          <span id="copy-status" class="copy-status" role="status" aria-live="polite"></span>
+        </div>
         <div class="demo-controls" aria-label="交互演示选项">
           <div class="controls-heading"><h2>试试你的显示方式</h2><button id="reset" type="button">重置演示 <span aria-hidden="true">↺</span></button></div>
           <fieldset class="control-row"><legend>皮肤</legend><div class="theme-options">

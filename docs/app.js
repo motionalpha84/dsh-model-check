@@ -8,6 +8,29 @@ const preferenceKey = 'dsh-model-check.ui.v2';
 const $ = id => document.getElementById(id);
 document.querySelectorAll('[data-version]').forEach(node => { node.textContent = 'v' + version; });
 
+let copyReset;
+$('copy-install').addEventListener('click', async () => {
+  const button = $('copy-install'), command = $('install-command'), status = $('copy-status');
+  clearTimeout(copyReset);
+  status.textContent = '';
+  button.disabled = true;
+  try {
+    await navigator.clipboard.writeText(command.textContent.trim());
+    button.textContent = '已复制';
+    status.textContent = '安装命令已复制';
+  } catch {
+    const range = document.createRange();
+    range.selectNodeContents(command);
+    const selection = window.getSelection();
+    selection.removeAllRanges(); selection.addRange(range);
+    button.textContent = '复制命令';
+    status.textContent = '请手动复制已选中的命令';
+  } finally {
+    button.disabled = false;
+    copyReset = setTimeout(() => { button.textContent = '复制命令'; status.textContent = ''; }, 4000);
+  }
+});
+
 // All plugin endpoints terminate here. CSP connect-src 'none' adds a second
 // boundary: this static showcase cannot make a network model request.
 window.fetch = async (input, options = {}) => {
