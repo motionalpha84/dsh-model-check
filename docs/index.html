@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Model Check：DeepSeek Harness 模型检测插件。体验独立指纹、糖果测评、响应路由与三款主题皮肤。">
+  <meta name="description" content="Model Check：DeepSeek Harness 桌面版与独立 Web 版通用的模型检测插件。体验独立指纹、糖果测评、响应路由与三款主题皮肤。">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
   <meta name="theme-color" content="#08131c">
   <title>Model Check · 模型检测，一目了然</title>
@@ -30,8 +30,14 @@
         <p class="eyebrow">DEEPSEEK HARNESS PLUGIN <span class="version" data-version>v0.1.0</span></p>
         <h1 id="hero-title">模型信息，<br><span>一目了然。</span></h1>
         <p class="lead">指纹候选、糖果测评、响应路由。<br>把关心的信息，放在会话旁的一扇小窗里。</p>
+        <div class="install-target" role="group" aria-label="安装目标">
+          <span>同一安装包</span>
+          <button type="button" data-install-profile="desktop" aria-pressed="true">桌面版</button>
+          <button type="button" data-install-profile="web" aria-pressed="false">Web 版</button>
+          <a href="https://github.com/motionalpha84/dsh-model-check#安装">安装详情 ↓</a>
+        </div>
         <div class="install-command" role="group" aria-label="推荐安装命令">
-          <code id="install-command"><span>dsh plugin</span> <span>--profile desktop</span> <span>add dsh-model-check</span> <span>--ignore-scripts</span></code>
+          <code id="install-command"><span>dsh plugin</span> <span id="install-profile">--profile desktop</span> <span>add dsh-model-check</span> <span>--ignore-scripts</span></code>
           <button id="copy-install" type="button" aria-label="复制安装命令">复制命令</button>
           <span id="copy-status" class="copy-status" role="status" aria-live="polite"></span>
         </div>
@@ -56,6 +62,7 @@
       <article><span class="feature-index">02 / 会话</span><h2>跟上每一次切换</h2><p>请求与响应分开显示。历史、频率按会话保存，最小化仍能查看候选摘要。</p></article>
       <article><span class="feature-index">03 / 外观</span><h2>融入你的工作区</h2><p>三款皮肤，也可跟随 DSH 主题。浮窗支持两侧吸附，收起后保留轻巧悬钮。</p></article>
     </section>
+    <p class="compatibility-note">桌面 / 独立 Web 通用 · Web 已通过 DSH 0.2.0-rc.2 的独立环境验证。<a href="https://github.com/motionalpha84/dsh-model-check/blob/main/COMPATIBILITY.md">查看验证范围 ↗</a></p>
     <p class="scope-note">实际使用会产生额外模型请求：联合检测默认 4 次，行为指纹 60 / 200 / 400 次。库内概率是相对分布，不能认证原聊天的模型身份。<a href="https://github.com/motionalpha84/dsh-model-check#如何理解结果">了解结果的含义 ↗</a></p>
   </main>
   <footer class="site-footer"><p>感谢 <a href="https://github.com/xqy2006/ModelTrace">xqy2006 · ModelTrace</a> 的指纹库与方法，以及 <a href="https://github.com/haowang02/cpa-plugin-codex-candy-eval">haowang02 · Candy Eval</a> 的糖果测评与行为基准。</p><div><span>Model Check <span data-version>v0.1.0</span></span><a href="https://github.com/motionalpha84/dsh-model-check/blob/main/NOTICE.md">来源与许可 ↗</a></div></footer>

@@ -1,6 +1,6 @@
 # Model Check
 
-**DeepSeek Harness 模型检测插件 · v0.1.0**
+**DeepSeek Harness 模型检测插件 · 桌面 / Web 通用 · v0.1.0**
 
 把独立指纹候选、糖果测评和响应路由放进一个轻巧的浮窗。
 
@@ -13,8 +13,16 @@
 <h3>模型信息，一目了然</h3>
 <p>联合检测 · 响应路由 · 会话历史<br>三款皮肤 · 跟随 DSH 主题 · 拖动吸附</p>
 
+桌面版：
+
 ```bash
 dsh plugin --profile desktop add dsh-model-check --ignore-scripts
+```
+
+独立 Web 版：
+
+```bash
+dsh plugin --profile web add dsh-model-check --ignore-scripts
 ```
 
 <p><a href="#安装"><b>↓安装详情</b></a></p>
@@ -31,20 +39,35 @@ dsh plugin --profile desktop add dsh-model-check --ignore-scripts
 - **会话隔离**：独立的历史和检测频率；支持仅会话首轮、每 N 轮和仅手动检测。
 - **紧凑浮窗**：278 px 完整面板、186 px 最小化摘要，双侧吸附、可拖动展开悬钮。最小化仍可查看候选与概率。
 - **外观**：流萤、浅色 · 银灰、深色 · 黑青，或跟随当前 DSH 主题；青色粒子微光与减少动态效果适配。
+- **桌面 / Web 通用**：同一个 `dsh-model-check@0.1.0` 安装包，分别安装到 `desktop` 或 `web` profile。独立 Web 的完整检测与界面流程已验证，详见 [兼容性与验证](COMPATIBILITY.md)。
 
 ## 安装
 
-需要 **DeepSeek Harness ≥ 0.2.0-rc.2**；从源码构建需要 **Node.js ≥ 22**。
+需要 **DeepSeek Harness ≥ 0.2.0-rc.2**。独立 Web 运行环境及源码构建需要 **Node.js ≥ 22**；桌面版使用 DSH 自带运行时。
 
 ### 推荐：按包名安装
 
-在终端运行以下命令，DSH 会自动下载正式版并启用插件：
+按使用的 DSH 版本选择命令。两端使用同一个正式包，但插件安装位置按 profile 分开。
+
+**桌面版**：使用 DSH 桌面安装附带的 `dsh` 命令：
 
 ```sh
 dsh plugin --profile desktop add dsh-model-check --ignore-scripts
 ```
 
-安装完成后重启 DSH，打开会话并完成一次聊天请求。安装者不需要 npm 账号。
+**独立 Web 版**：使用 Web 运行环境中的 `dsh` 命令：
+
+```sh
+dsh plugin --profile web add dsh-model-check --ignore-scripts
+```
+
+若通过 npm 临时运行 DSH、未配置 `dsh` 命令，可执行：
+
+```sh
+npx @deepseek-ai/dsh plugin --profile web add dsh-model-check --ignore-scripts
+```
+
+安装后重启对应的 DSH 进程；Web 版重启 Web 服务并刷新浏览器。打开会话并完成一次聊天请求即可看到结果。安装者不需要 npm 账号。npm 版 DSH CLI 管理 `web` profile；桌面版 `desktop` profile 应使用桌面安装附带的 CLI。
 
 也可以在 DSH 的“添加插件 → 包名或地址”中填入：
 
@@ -56,7 +79,7 @@ dsh-model-check
 
 ### 备用：从 GitHub 在线安装
 
-如果当前 npm 镜像尚未同步，可以直接使用正式版安装包地址：
+如果当前 npm 镜像尚未同步，可以直接使用正式版安装包地址。以下以桌面版为例，Web 版将 `--profile desktop` 改为 `--profile web`：
 
 ```sh
 dsh plugin --profile desktop add https://github.com/motionalpha84/dsh-model-check/releases/download/v0.1.0/dsh-model-check-0.1.0.tgz --ignore-scripts
@@ -67,6 +90,8 @@ dsh plugin --profile desktop add https://github.com/motionalpha84/dsh-model-chec
 1. 到 [Releases](https://github.com/motionalpha84/dsh-model-check/releases/latest) 下载 `Model-Check-0.1.0.zip` 并解压。
 2. 在 PowerShell 运行解压目录中的 `Install-Model-Check.ps1`。脚本会核验安装包 SHA256 并调用 DSH 官方插件命令。
 3. 重启 DSH，打开会话并完成一次聊天请求。
+
+ZIP 中的 PowerShell 安装脚本默认安装到桌面版；独立 Web 版可直接使用下方 `.tgz` 命令，并将 `--profile desktop` 改为 `--profile web`。
 
 若未自动找到 `dsh`，给脚本传入 DSH 安装目录中的命令路径：
 
@@ -110,6 +135,8 @@ dsh plugin --profile desktop add "<下载目录>\dsh-model-check-0.1.0.tgz" --of
 ## 本地数据
 
 历史和设置保存在 `$DSH_HOME/model-check/state.json`；未设置时为 `~/.dsh/model-check/state.json`，也可用 `MODEL_CHECK_DATA` 指定目录。保存最近请求摘要及有限数量的测试回答，不保存 API Key、原聊天内容或原聊天推理内容。插件通过 DSH 当前供应商发送检测请求，不内置供应商密钥。
+
+Web 版的检测与历史保存在运行 DSH Web 服务的机器上，浮窗布局和皮肤保存在当前浏览器。不同 profile 的安装并不等于数据自动隔离：同时运行桌面与 Web 时，可使用不同的 `DSH_HOME` 或为各进程设置不同的 `MODEL_CHECK_DATA`，避免共同写入同一历史文件。两端不会自动同步布局、皮肤或供应商配置。
 
 公开演示全部使用虚构示例；`test-gpt` 和 `test-Claude` 仅是演示名称，不限制实际插件支持的供应商。
 

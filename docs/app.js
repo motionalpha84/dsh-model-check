@@ -9,6 +9,19 @@ const $ = id => document.getElementById(id);
 document.querySelectorAll('[data-version]').forEach(node => { node.textContent = 'v' + version; });
 
 let copyReset;
+document.querySelectorAll('[data-install-profile]').forEach(button => {
+  button.addEventListener('click', () => {
+    const profile = button.dataset.installProfile;
+    if (!['desktop', 'web'].includes(profile)) return;
+    $('install-profile').textContent = '--profile ' + profile;
+    document.querySelectorAll('[data-install-profile]').forEach(option => {
+      option.setAttribute('aria-pressed', String(option === button));
+    });
+    clearTimeout(copyReset);
+    $('copy-install').textContent = '复制命令';
+    $('copy-status').textContent = '';
+  });
+});
 $('copy-install').addEventListener('click', async () => {
   const button = $('copy-install'), command = $('install-command'), status = $('copy-status');
   clearTimeout(copyReset);

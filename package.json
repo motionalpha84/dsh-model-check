@@ -1,7 +1,7 @@
 {
   "name": "dsh-model-check",
   "version": "0.1.0",
-  "description": "Model Check：ModelTrace 与糖果题联合检测、模型路由、行为指纹。",
+  "description": "Model Check：DeepSeek Harness 桌面 / Web 通用的模型检测插件，支持 ModelTrace 与糖果题联合检测、响应路由及行为指纹。",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
