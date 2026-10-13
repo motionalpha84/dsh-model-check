@@ -7,13 +7,13 @@
 <table>
 <tr>
 <td width="42%" align="center">
-<a href="https://motionalpha84.github.io/dsh-model-check/"><img src="docs/assets/preview.jpg" alt="Model Check 交互演示，点击打开" width="278"></a>
+<a href="https://motionalpha84.github.io/dsh-model-check/"><img src="https://motionalpha84.github.io/dsh-model-check/assets/preview.jpg" alt="Model Check 交互演示，点击打开" width="278"></a>
 </td>
 <td width="58%" valign="middle">
 <h3>模型信息，一目了然</h3>
 <p>联合检测 · 响应路由 · 会话历史<br>三款皮肤 · 跟随 DSH 主题 · 拖动吸附</p>
 <p><a href="https://motionalpha84.github.io/dsh-model-check/"><b>▶ 打开交互演示</b></a></p>
-<p><a href="#安装"><b>↓ 推荐安装：DSH 命令</b></a> · <a href="https://github.com/motionalpha84/dsh-model-check/releases/latest">离线下载</a></p>
+<p><a href="#安装"><b>↓ 推荐安装：dsh-model-check</b></a> · <a href="https://github.com/motionalpha84/dsh-model-check/releases/latest">离线下载</a></p>
 <p><sub>演示使用真实插件组件与虚构数据，提供商仅为 test-gpt、test-Claude，不调用模型、不消耗额度。README 内为静态预览，点击进入完整交互页面。</sub></p>
 </td>
 </tr>
@@ -32,12 +32,12 @@
 
 需要 **DeepSeek Harness ≥ 0.2.0-rc.2**；从源码构建需要 **Node.js ≥ 22**。
 
-### 推荐：DSH 在线安装
+### 推荐：按包名安装
 
 在终端运行以下命令，DSH 会自动下载正式版并启用插件：
 
 ```sh
-dsh plugin --profile desktop add https://github.com/motionalpha84/dsh-model-check/releases/download/v0.1.0/dsh-model-check-0.1.0.tgz --ignore-scripts
+dsh plugin --profile desktop add dsh-model-check --ignore-scripts
 ```
 
 安装完成后重启 DSH，打开会话并完成一次聊天请求。安装者不需要 npm 账号。
@@ -45,10 +45,18 @@ dsh plugin --profile desktop add https://github.com/motionalpha84/dsh-model-chec
 也可以在 DSH 的“添加插件 → 包名或地址”中填入：
 
 ```text
-https://github.com/motionalpha84/dsh-model-check/releases/download/v0.1.0/dsh-model-check-0.1.0.tgz
+dsh-model-check
 ```
 
-包名 `dsh-model-check` 的 npm 发布正在准备中，当前请使用上面的完整地址安装。发布完成后会同步更简短的包名安装方式。
+[npm 安装包](https://www.npmjs.com/package/dsh-model-check) · [交互演示](https://motionalpha84.github.io/dsh-model-check/)
+
+### 备用：从 GitHub 在线安装
+
+如果当前 npm 镜像尚未同步，可以直接使用正式版安装包地址：
+
+```sh
+dsh plugin --profile desktop add https://github.com/motionalpha84/dsh-model-check/releases/download/v0.1.0/dsh-model-check-0.1.0.tgz --ignore-scripts
+```
 
 ### 备用：离线安装
 
