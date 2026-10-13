@@ -7,7 +7,7 @@
   "models": [
     {
       "id": "gpt-5.4",
-      "display_name": "gpt-5.4",
+      "display_name": "GPT-5.4",
       "family": "gpt",
       "family_name": "GPT",
       "response_count": 36,
@@ -386,7 +386,7 @@
     },
     {
       "id": "gpt-5.5",
-      "display_name": "gpt-5.5",
+      "display_name": "GPT-5.5",
       "family": "gpt",
       "family_name": "GPT",
       "response_count": 36,
@@ -765,7 +765,7 @@
     },
     {
       "id": "gpt-5.6-sol",
-      "display_name": "gpt-5.6-sol",
+      "display_name": "GPT-5.6 Sol",
       "family": "gpt",
       "family_name": "GPT",
       "response_count": 36,
@@ -1144,7 +1144,7 @@
     },
     {
       "id": "gpt-5.6-terra",
-      "display_name": "gpt-5.6-terra",
+      "display_name": "GPT-5.6 Terra",
       "family": "gpt",
       "family_name": "GPT",
       "response_count": 36,
@@ -1523,7 +1523,7 @@
     },
     {
       "id": "gpt-5.6-luna",
-      "display_name": "gpt-5.6-luna",
+      "display_name": "GPT-5.6 Luna",
       "family": "gpt",
       "family_name": "GPT",
       "response_count": 36,
@@ -1902,7 +1902,7 @@
     },
     {
       "id": "gpt-6-astra",
-      "display_name": "gpt-6-astra",
+      "display_name": "GPT-6 Astra",
       "family": "gpt",
       "family_name": "GPT",
       "response_count": 36,
@@ -2281,7 +2281,7 @@
     },
     {
       "id": "gpt-6-sol",
-      "display_name": "gpt-6-sol",
+      "display_name": "GPT-6 Sol",
       "family": "gpt",
       "family_name": "GPT",
       "response_count": 36,
@@ -2660,7 +2660,7 @@
     },
     {
       "id": "gpt-6-luna",
-      "display_name": "gpt-6-luna",
+      "display_name": "GPT-6 Luna",
       "family": "gpt",
       "family_name": "GPT",
       "response_count": 36,
@@ -3039,7 +3039,7 @@
     },
     {
       "id": "claude-haiku-4-5-20251001",
-      "display_name": "claude-haiku-4-5-20251001",
+      "display_name": "Claude-Haiku 4.5",
       "family": "claude",
       "family_name": "Claude",
       "response_count": 36,
@@ -3418,7 +3418,7 @@
     },
     {
       "id": "claude-sonnet-4-6",
-      "display_name": "claude-sonnet-4-6",
+      "display_name": "Claude-Sonnet 4.6",
       "family": "claude",
       "family_name": "Claude",
       "response_count": 36,
@@ -3797,7 +3797,7 @@
     },
     {
       "id": "claude-sonnet-5",
-      "display_name": "claude-sonnet-5",
+      "display_name": "Claude-Sonnet 5",
       "family": "claude",
       "family_name": "Claude",
       "response_count": 36,
@@ -4176,7 +4176,7 @@
     },
     {
       "id": "claude-opus-4-6",
-      "display_name": "claude-opus-4-6",
+      "display_name": "Claude-Opus 4.6",
       "family": "claude",
       "family_name": "Claude",
       "response_count": 36,
@@ -4555,7 +4555,7 @@
     },
     {
       "id": "claude-opus-4-7",
-      "display_name": "claude-opus-4-7",
+      "display_name": "Claude-Opus 4.7",
       "family": "claude",
       "family_name": "Claude",
       "response_count": 36,
@@ -4934,7 +4934,7 @@
     },
     {
       "id": "claude-opus-4-8",
-      "display_name": "claude-opus-4-8",
+      "display_name": "Claude-Opus 4.8",
       "family": "claude",
       "family_name": "Claude",
       "response_count": 36,
@@ -5313,7 +5313,7 @@
     },
     {
       "id": "claude-opus-5",
-      "display_name": "claude-opus-5",
+      "display_name": "Claude-Opus 5",
       "family": "claude",
       "family_name": "Claude",
       "response_count": 36,
@@ -5692,7 +5692,7 @@
     },
     {
       "id": "claude-opus-5-5",
-      "display_name": "claude-opus-5-5",
+      "display_name": "Claude-Opus 5.5",
       "family": "claude",
       "family_name": "Claude",
       "response_count": 36,
@@ -6071,7 +6071,7 @@
     },
     {
       "id": "claude-sonnet-5-5",
-      "display_name": "claude-sonnet-5-5",
+      "display_name": "Claude-Sonnet 5.5",
       "family": "claude",
       "family_name": "Claude",
       "response_count": 36,
@@ -6450,7 +6450,7 @@
     },
     {
       "id": "claude-haiku-5-5",
-      "display_name": "claude-haiku-5-5",
+      "display_name": "Claude-Haiku 5.5",
       "family": "claude",
       "family_name": "Claude",
       "response_count": 36,
@@ -6829,7 +6829,7 @@
     },
     {
       "id": "gpt-6.1-sol",
-      "display_name": "gpt-6.1-sol",
+      "display_name": "GPT-6.1 Sol",
       "family": "gpt",
       "family_name": "GPT",
       "response_count": 36,

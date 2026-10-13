@@ -3,6 +3,7 @@ import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ModelMonitor } from '../src/monitor.mjs';
 import { resolveSkin } from '../src/skin-theme.mjs';
+import { displayModel } from '../src/model-names.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => readFileSync(join(root, file), 'utf8');
@@ -59,6 +60,7 @@ const icons = Object.fromEntries(readdirSync(join(root, 'assets/ui-icons')).filt
 const client = read('src/client.js').replace('/*__MODEL_CHECK_CSS__*/', JSON.stringify(read('src/panel.css')))
   .replace('/*__MODEL_CHECK_ICONS__*/', JSON.stringify(icons))
   .replace('/*__MODEL_CHECK_ART__*/', JSON.stringify(artwork))
+  .replace('/*__MODEL_CHECK_DISPLAY_MODEL__*/', () => displayModel.toString())
   .replace('/*__MODEL_CHECK_RESOLVE_SKIN__*/', resolveSkin.toString());
 writeFileSync(join(output, 'plugin.js'), client);
 writeFileSync(join(output, 'fixtures.js'), 'export default ' + JSON.stringify(fixtures, null, 2) + ';\n');

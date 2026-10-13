@@ -32,7 +32,7 @@
   },
   "bankUnion": {
     "file": "assets/unified_bank.json",
-    "sha256": "089d6244665972a1721ca7987642167883fc92e8efeeb27daa9401a45b120736",
+    "sha256": "db3d26d1a2080c0a375dc6d2be1ce413a26bd6042f5736753529a06bdd293b12",
     "models": 19,
     "method": "shared-reference-anchored calibrated log-odds fusion",
     "recalibrated": false,

@@ -7,7 +7,7 @@
 <table>
 <tr>
 <td width="42%" align="center">
-<a href="https://motionalpha84.github.io/dsh-model-check/"><img src="docs/assets/preview.png" alt="Model Check 交互演示，点击打开" width="278"></a>
+<a href="https://motionalpha84.github.io/dsh-model-check/"><img src="docs/assets/preview.jpg" alt="Model Check 交互演示，点击打开" width="278"></a>
 </td>
 <td width="58%" valign="middle">
 <h3>模型信息，一目了然</h3>
@@ -63,6 +63,15 @@ dsh plugin --profile desktop add "<下载目录>\dsh-model-check-0.1.0.tgz" --of
 **库内概率是相对候选分布，不是模型身份认证。** 检测请求使用独立上下文，不能据此认证原聊天请求的后端。糖果命中不参与模型概率计算，也不等于数学答案正确。
 
 数字候选库合并自两个上游快照，共 **19 个 GPT / Claude 模型**；保留各原始库的特征与校准，以 16 个共有模型为参照融合相对 log-odds。合并结果尚未独立重新校准，不能套用单库交叉验证准确率。请求模型未收录时会明确提示，不能仅因出现其他候选就认定模型被替换。
+
+界面与演示统一使用以下模型名称。请求、匹配及历史存储仍使用原始模型 ID，名称格式不会改变检测结果。
+
+| 系列 | 数字指纹候选模型 |
+| --- | --- |
+| GPT | GPT-5.4、GPT-5.5、GPT-5.6 Sol、GPT-5.6 Terra、GPT-5.6 Luna、GPT-6 Astra、GPT-6 Sol、GPT-6 Luna、GPT-6.1 Sol |
+| Claude-Haiku | Claude-Haiku 4.5、Claude-Haiku 5.5 |
+| Claude-Sonnet | Claude-Sonnet 4.6、Claude-Sonnet 5、Claude-Sonnet 5.5 |
+| Claude-Opus | Claude-Opus 4.6、Claude-Opus 4.7、Claude-Opus 4.8、Claude-Opus 5、Claude-Opus 5.5 |
 
 行为指纹包含 **8 个 GPT 模型基准、16 项探针**。JSD 越小表示分布越接近，置换检验的 p 值不是模型概率。原始库、上游提交和文件校验信息见 [assets/provenance.json](assets/provenance.json)。
 

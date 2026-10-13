@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve, dirname, join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { resolveSkin } from '../src/skin-theme.mjs';
+import { displayModel } from '../src/model-names.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const upstreamBlobs = {
@@ -25,7 +26,8 @@ for (const [file, expected] of Object.entries({ ...upstreamBlobs, ...candyBlobs 
   if (actual !== expected) throw new Error(`Upstream snapshot changed: ${file}`);
 }
 const banks = ['assets/modeltrace-original-bank.json', 'assets/modeltrace-candy-bank.json'].map(file => JSON.parse(readFileSync(join(root, file))));
-const models = [...new Map(banks.flatMap(bank => bank.models.map(model => [model.id, model]))).values()];
+const models = [...new Map(banks.flatMap(bank => bank.models.map(model => [model.id, model]))).values()]
+  .map(model => ({ ...model, display_name:displayModel(model.id) }));
 const union = { schema:'model-check-bank-union', recommended_queries:3, minimum_valid_numbers:80,
   method:'shared-reference-anchored calibrated log-odds fusion', fusion_recalibrated:false, models, banks };
 writeFileSync(join(root, 'assets/unified_bank.json'), JSON.stringify(union, null, 2) + '\n');
@@ -36,6 +38,7 @@ const client = readFileSync(join(root, 'src/client.js'), 'utf8');
 const styles = readFileSync(join(root, 'src/panel.css'), 'utf8');
 if (!client.includes('/*__MODEL_CHECK_CSS__*/')) throw new Error('Missing stylesheet placeholder');
 if (!client.includes('/*__MODEL_CHECK_RESOLVE_SKIN__*/')) throw new Error('Missing theme resolver placeholder');
+if (!client.includes('/*__MODEL_CHECK_DISPLAY_MODEL__*/')) throw new Error('Missing model name formatter placeholder');
 const icons = Object.fromEntries(readdirSync(join(root, 'assets/ui-icons')).filter(name => name.endsWith('.svg')).map(name => [
   name.slice(0, -4), readFileSync(join(root, 'assets/ui-icons', name), 'utf8').trim()
     .replace('<svg', '<svg aria-hidden="true" focusable="false"'),
@@ -47,6 +50,7 @@ const artwork = Object.fromEntries(['character-original', 'header-ribbons', 'pan
 if (!client.includes('/*__MODEL_CHECK_ART__*/')) throw new Error('Missing artwork placeholder');
 writeFileSync(join(root, 'lib/client.js'), client.replace('/*__MODEL_CHECK_CSS__*/', JSON.stringify(styles))
   .replace('/*__MODEL_CHECK_RESOLVE_SKIN__*/', resolveSkin.toString())
+  .replace('/*__MODEL_CHECK_DISPLAY_MODEL__*/', () => displayModel.toString())
   .replace('/*__MODEL_CHECK_ICONS__*/', JSON.stringify(icons))
   .replace('/*__MODEL_CHECK_ART__*/', JSON.stringify(artwork)));
 const sha256 = file => createHash('sha256').update(readFileSync(join(root, file))).digest('hex');

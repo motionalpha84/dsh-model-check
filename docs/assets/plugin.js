@@ -23,23 +23,37 @@ window.__ModuleLoader__.load({
       return '';
     };
     const label = value => typeof value === 'string' ? value : '—';
-    const MODEL_NAMES = {
-      'claude-haiku-4-5-20251001': 'claude-haiku-4.5',
-      'claude-haiku-5-5': 'claude-haiku-5.5',
-      'claude-sonnet-4-6': 'claude-sonnet-4.6',
-      'claude-sonnet-5': 'claude-sonnet-5',
-      'claude-sonnet-5-5': 'claude-sonnet-5.5',
-      'claude-opus-4-6': 'claude-opus-4.6',
-      'claude-opus-4-7': 'claude-opus-4.7',
-      'claude-opus-4-8': 'claude-opus-4.8',
-      'claude-opus-5': 'claude-opus-5',
-      'claude-opus-5-5': 'claude-opus-5.5',
-    };
-    // Format UI labels only; comparisons and requests keep their original model IDs.
-    const displayModel = value => {
-      const name = label(value), start = name.lastIndexOf('/') + 1, id = name.slice(start);
-      return Object.hasOwn(MODEL_NAMES, id) ? name.slice(0, start) + MODEL_NAMES[id] : name;
-    };
+    const displayModel = function displayModel(value) {
+  const names = {
+    'gpt-5.4': 'GPT-5.4',
+    'gpt-5.5': 'GPT-5.5',
+    'gpt-5.6-sol': 'GPT-5.6 Sol',
+    'gpt-5.6-terra': 'GPT-5.6 Terra',
+    'gpt-5.6-luna': 'GPT-5.6 Luna',
+    'gpt-6-astra': 'GPT-6 Astra',
+    'gpt-6-sol': 'GPT-6 Sol',
+    'gpt-6-luna': 'GPT-6 Luna',
+    'gpt-6.1-sol': 'GPT-6.1 Sol',
+    'claude-haiku-4-5': 'Claude-Haiku 4.5',
+    'claude-haiku-4-5-20251001': 'Claude-Haiku 4.5',
+    'claude-haiku-5-5': 'Claude-Haiku 5.5',
+    'claude-sonnet-4-6': 'Claude-Sonnet 4.6',
+    'claude-sonnet-5': 'Claude-Sonnet 5',
+    'claude-sonnet-5-5': 'Claude-Sonnet 5.5',
+    'claude-opus-4-6': 'Claude-Opus 4.6',
+    'claude-opus-4-7': 'Claude-Opus 4.7',
+    'claude-opus-4-8': 'Claude-Opus 4.8',
+    'claude-opus-5': 'Claude-Opus 5',
+    'claude-opus-5-5': 'Claude-Opus 5.5',
+  };
+  const name = typeof value === 'string' ? value : '—';
+  const start = name.lastIndexOf('/') + 1;
+  const id = name.slice(start).toLowerCase()
+    .replace(/^(claude-(?:haiku|sonnet|opus))-(\d+)\.(\d+)$/, '$1-$2-$3');
+  return Object.hasOwn(names, id) ? name.slice(0, start) + names[id] : name;
+};
+    // Also format model IDs inside saved attribution messages from older versions.
+    const displayModelText = value => label(value).replace(/\b(?:gpt|claude)(?:-[a-z0-9]+(?:\.[0-9]+)*)+\b/gi, displayModel);
     const normalize = value => String(value || '').toLowerCase().replace(/^(openai|anthropic|models)\//, '');
     const percent = value => Number.isFinite(value) ? (value * 100).toFixed(1) : '—';
     const behaviorBlockedMessage = 'Gemini 系列已禁用行为指纹，仍可使用联合检测。';
@@ -596,7 +610,7 @@ window.__ModuleLoader__.load({
             text.textContent = answer.answer || answer.error || '没有回答'; row.append(heading, text); container.append(row);
           }
           if (kind === 'behavior' && payload.attribution) {
-            const result = payload.attribution, message = document.createElement('p'); message.className = 'attribution-message'; message.textContent = result.message; container.append(message);
+            const result = payload.attribution, message = document.createElement('p'); message.className = 'attribution-message'; message.textContent = displayModelText(result.message); container.append(message);
             const header = document.createElement('div'); header.className = 'behavior-row behavior-heading';
             for (const title of ['基准模型','JSD','p 值']) { const cell = document.createElement('span'); cell.textContent = title; header.append(cell); } container.append(header);
             for (const item of result.comparisons || []) {
@@ -606,7 +620,7 @@ window.__ModuleLoader__.load({
               } container.append(row);
             }
             const threshold = document.createElement('p'); threshold.className = 'evaluation-copy'; threshold.textContent = `显著性阈值 α = ${result.alpha?.toFixed(6) ?? '—'}`; container.append(threshold);
-            for (const warning of result.warnings || []) { const note = document.createElement('p'); note.className = 'evaluation-copy'; note.textContent = warning; container.append(note); }
+            for (const warning of result.warnings || []) { const note = document.createElement('p'); note.className = 'evaluation-copy'; note.textContent = displayModelText(warning); container.append(note); }
           }
           positionOverlays();
         }
